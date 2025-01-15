@@ -1,0 +1,17 @@
+version: '3.7'
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: test
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+
+  cache:
+    image: redis:6
+
+  tests:
+    image: my-test-image
+    depends_on:
+      - db
+      - cache
